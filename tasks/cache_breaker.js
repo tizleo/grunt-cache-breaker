@@ -1,5 +1,4 @@
 "use strict";
-var cloneDeep = require("lodash.clonedeep");
 
 module.exports = function (grunt) {
 
@@ -34,7 +33,7 @@ module.exports = function (grunt) {
                         if (typeof item === "string") {
                             input = cb.breakCache(input, item, options);
                         } else {
-                            var clone = cloneDeep(options);
+                            var clone = structuredClone(options);
                             Object.keys(item).forEach(function (key) {
                                 clone.src = {
                                     path: item[key]
