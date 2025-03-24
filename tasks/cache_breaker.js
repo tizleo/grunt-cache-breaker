@@ -1,6 +1,7 @@
 "use strict";
 
 const cb = require("cache-breaker");
+const _ = require("lodash");
 
 module.exports = function (grunt) {
 
@@ -32,7 +33,7 @@ module.exports = function (grunt) {
                         if (typeof item === "string") {
                             input = cb.breakCache(input, item, options);
                         } else {
-                            const clone = structuredClone(options);
+                            const clone = _.cloneDeep(options);
                             Object.keys(item).forEach(function (key) {
                                 clone.src = {
                                     path: item[key]
